@@ -21,6 +21,11 @@ import {
 import { Loader } from './Loader';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
+import { Register } from 'pages/Register';
+import { Login } from 'pages/Login';
+import { Contacts } from 'pages/Contacts';
+import { UserMenu } from 'pages/UserMenu';
+import { PrivateRoute } from 'HOC/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -78,7 +83,20 @@ export const App = () => {
             <Filter onFilterChange={handleSetFilter} filter={filter} />
           </section>
           <Routes>
-            <Route path="/" element={<Layout />} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Register />} />
+              <Route path="login" element={<Login />} />
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute>
+                    <Contacts />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="usermenu" element={<UserMenu />} />
+              <Route path="*" element={<Register />} />
+            </Route>
           </Routes>
         </div>
       )}
