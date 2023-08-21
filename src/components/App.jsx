@@ -19,6 +19,8 @@ import {
   fetchContactsThunk,
 } from 'Redux/operations';
 import { Loader } from './Loader';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -65,15 +67,20 @@ export const App = () => {
       ) : isLoading ? (
         <Loader />
       ) : (
-        <section>
-          <ToastContainer />
-          <Input onSubmit={handleAddContact} />
-          <ContactsList
-            contacts={filteredContacts}
-            onDeleteContact={handleDeleteContact}
-          />
-          <Filter onFilterChange={handleSetFilter} filter={filter} />
-        </section>
+        <div>
+          <section>
+            <ToastContainer />
+            <Input onSubmit={handleAddContact} />
+            <ContactsList
+              contacts={filteredContacts}
+              onDeleteContact={handleDeleteContact}
+            />
+            <Filter onFilterChange={handleSetFilter} filter={filter} />
+          </section>
+          <Routes>
+            <Route path="/" element={<Layout />} />
+          </Routes>
+        </div>
       )}
     </div>
   );
