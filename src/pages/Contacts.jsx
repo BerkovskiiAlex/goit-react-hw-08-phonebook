@@ -62,7 +62,6 @@ export const Contacts = () => {
             />
             <Filter onFilterChange={handleSetFilter} filter={filter} />
           </section>
-          ;{' '}
         </div>
       )}
     </div>

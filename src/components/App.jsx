@@ -3,28 +3,32 @@ import 'modern-normalize';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContactsThunk } from 'Redux/operations';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Register } from 'pages/Register';
 import { Login } from 'pages/Login';
 import { Contacts } from 'pages/Contacts';
 import { UserMenu } from 'pages/UserMenu';
 import { PrivateRoute } from 'HOC/PrivateRoute';
-import { selectIsLoggedIn } from 'Redux/Auth/selectors';
+import { selectIsLoggedIn, selectIsRefresh } from 'Redux/Auth/selectors';
+import { PublicRoute } from 'HOC/PublicRoute';
+import { refreshThunk } from 'Redux/Auth/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isRefresh = useSelector(selectIsRefresh);
 
   const login = useSelector(selectIsLoggedIn);
   useEffect(() => {
     login && dispatch(fetchContactsThunk());
+    dispatch(refreshThunk());
   }, [dispatch, login]);
 
-  return (
+  return isRefresh ? (
+    <h1>Loading...</h1>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Register />} />
-        <Route path="login" element={<Login />} />
         <Route
           path="contacts"
           element={
@@ -33,8 +37,24 @@ export const App = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
         <Route path="usermenu" element={<UserMenu />} />
-        <Route path="*" element={<Register />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );

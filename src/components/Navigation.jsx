@@ -11,10 +11,10 @@ export const Navigation = () => {
   return (
     <nav>
       <div>
+        <NavLink to="/contacts">Contacts</NavLink>
+        {isLoggedIn ? <h1>{`${name}`}</h1> : null}
         <NavLink to="/register">Register</NavLink>
         <NavLink to="/login">Login</NavLink>
-        {isLoggedIn ? <h1>{`${name}`}</h1> : null}
-        <NavLink to="/contacts">Contacts</NavLink>
         {isLoggedIn ? <NavLink to="/usermenu">User menu</NavLink> : null}
       </div>
     </nav>

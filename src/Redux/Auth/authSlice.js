@@ -1,7 +1,12 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThunk, logoutThunk, registerThunk } from './operations';
+import {
+  loginThunk,
+  logoutThunk,
+  refreshThunk,
+  registerThunk,
+} from './operations';
 
 const userSlice = createSlice({
   name: 'auth',
@@ -13,6 +18,7 @@ const userSlice = createSlice({
     token: '',
     error: '',
     isLoggedIn: false,
+    isRefresh: false,
   },
   extraReducers: builder => {
     builder
@@ -33,6 +39,18 @@ const userSlice = createSlice({
         };
         state.token = '';
         state.isLoggedIn = false;
+      })
+      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.isLoggedIn = true;
+        state.isRefresh = false;
+      })
+      .addCase(refreshThunk.pending, (state, action) => {
+        state.isRefresh = true;
+      })
+      .addCase(refreshThunk.rejected, (state, action) => {
+        state.isRefresh = false;
       });
   },
 });

@@ -33,7 +33,7 @@ export const Login = () => {
   };
 
   if (isLoggedIn) {
-    return <Navigate to={location.state?.from || '/contacts'} />;
+    return <Navigate to={location.state?.from || '/'} />;
   }
 
   return (
@@ -43,13 +43,13 @@ export const Login = () => {
         <form onSubmit={handleSubmit}>
           <input
             placeholder="Enter your email"
-            type="text"
+            type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
           <input
             placeholder="Enter your password"
-            type="text"
+            type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
@@ -58,9 +58,10 @@ export const Login = () => {
           </div>
         </form>
       </div>
-      <Link to="/register">
-        You are not registered yet? Go to register form
-      </Link>
+      <span>
+        You are not registered yet?
+        <Link to="/register">Go to register form</Link>
+      </span>
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const API = axios.create({
   baseURL: 'https://connections-api.herokuapp.com/',
@@ -48,6 +49,23 @@ export const logoutThunk = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, { rejectWithValue, getState }) => {
+    const savedToken = getState().user.token;
+    if (!savedToken) {
+      return rejectWithValue(`Token is not found!`);
+    }
+    try {
+      setToken(savedToken);
+      const { data } = await API.get('users/current');
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.message);
     }
   }
 );
