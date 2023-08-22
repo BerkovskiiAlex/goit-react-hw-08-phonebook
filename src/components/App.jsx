@@ -74,7 +74,6 @@ export const App = () => {
       ) : (
         <div>
           <section>
-            <ToastContainer />
             <Input onSubmit={handleAddContact} />
             <ContactsList
               contacts={filteredContacts}
