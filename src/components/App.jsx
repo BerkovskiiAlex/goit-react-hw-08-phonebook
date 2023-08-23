@@ -19,11 +19,9 @@ export const App = () => {
   const dispatch = useDispatch();
   const isRefresh = useSelector(selectIsRefresh);
 
-  const IsLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
-    IsLoggedIn && dispatch(fetchContactsThunk());
     dispatch(refreshThunk());
-  }, [dispatch, IsLoggedIn]);
+  }, [dispatch]);
 
   return isRefresh ? (
     <Loader />

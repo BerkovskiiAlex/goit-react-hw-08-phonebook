@@ -1,7 +1,7 @@
 import { registerThunk } from 'Redux/Auth/operations';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
   StyledRegisterButton,
@@ -20,8 +20,6 @@ export const Register = () => {
   const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,7 +27,6 @@ export const Register = () => {
     dispatch(registerThunk(credentials))
       .unwrap()
       .then(res => {
-        navigate(location.state?.from || '/contacts');
         toast.success(`Registration successful, hello ${res.user.name}`);
       })
       .catch(err => {

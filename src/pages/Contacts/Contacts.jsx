@@ -1,4 +1,9 @@
-import { addContactThunk, deleteContactThunk } from 'Redux/Contacts/operations';
+import { selectIsLoggedIn } from 'Redux/Auth/selectors';
+import {
+  addContactThunk,
+  deleteContactThunk,
+  fetchContactsThunk,
+} from 'Redux/Contacts/operations';
 import { addFilter } from 'Redux/Contacts/phonebookSlise';
 import {
   selectContactsItems,
@@ -10,7 +15,7 @@ import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Input } from 'components/Input/Input';
 import { Loader } from 'components/Loader/Loader';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -20,6 +25,12 @@ export const Contacts = () => {
   const filter = useSelector(selectFilter);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const IsLoggedIn = useSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    IsLoggedIn && dispatch(fetchContactsThunk());
+  }, [dispatch, IsLoggedIn]);
+
   const handleAddContact = (name, number) => {
     const newContact = { name, number };
 

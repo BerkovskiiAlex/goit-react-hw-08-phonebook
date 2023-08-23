@@ -3,7 +3,7 @@ import { selectIsLoggedIn } from 'Redux/Auth/selectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
   StyledLoginButton,
@@ -22,7 +22,6 @@ export const Login = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -30,7 +29,6 @@ export const Login = () => {
     dispatch(loginThunk(credentials))
       .unwrap()
       .then(res => {
-        navigate(location.state?.from || '/contacts');
         toast.success(`Hello, ${res.user.name}`);
       })
       .catch(err => {
