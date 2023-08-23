@@ -1,11 +1,11 @@
-import { addContactThunk, deleteContactThunk } from 'Redux/operations';
-import { addFilter } from 'Redux/phonebookSlise';
+import { addContactThunk, deleteContactThunk } from 'Redux/Contacts/operations';
+import { addFilter } from 'Redux/Contacts/phonebookSlise';
 import {
   selectContactsItems,
   selectError,
   selectFilter,
   selectIsLoading,
-} from 'Redux/sellectors';
+} from 'Redux/Contacts/sellectors';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Input } from 'components/Input/Input';

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import 'modern-normalize';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContactsThunk } from 'Redux/operations';
+import { fetchContactsThunk } from 'Redux/Contacts/operations';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { Register } from 'pages/Register/Register';
@@ -13,19 +13,20 @@ import { PrivateRoute } from 'HOC/PrivateRoute';
 import { selectIsLoggedIn, selectIsRefresh } from 'Redux/Auth/selectors';
 import { PublicRoute } from 'HOC/PublicRoute';
 import { refreshThunk } from 'Redux/Auth/operations';
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
   const isRefresh = useSelector(selectIsRefresh);
 
-  const login = useSelector(selectIsLoggedIn);
+  const IsLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
-    login && dispatch(fetchContactsThunk());
+    IsLoggedIn && dispatch(fetchContactsThunk());
     dispatch(refreshThunk());
-  }, [dispatch, login]);
+  }, [dispatch, IsLoggedIn]);
 
   return isRefresh ? (
-    <h1>Loading...</h1>
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

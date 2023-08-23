@@ -11,14 +11,11 @@ export const Navigation = () => {
   return (
     <nav>
       <StyledDiv>
-        <StyledNavLink to="/contacts">Contacts</StyledNavLink>
-
-        {isLoggedIn && <StyledNavLink to="/usermenu">User menu</StyledNavLink>}
-
+        {isLoggedIn && <StyledNavLink to="/contacts">Contacts</StyledNavLink>}
         {isLoggedIn && <StyledH1>{`${name}`}</StyledH1>}
-
-        <StyledNavLink to="/register">Register</StyledNavLink>
-        <StyledNavLink to="/login">Login</StyledNavLink>
+        {isLoggedIn && <StyledNavLink to="/usermenu">User menu</StyledNavLink>}
+        {!isLoggedIn && <StyledNavLink to="/register">Register</StyledNavLink>}
+        {!isLoggedIn && <StyledNavLink to="/login">Login</StyledNavLink>}
       </StyledDiv>
     </nav>
   );
