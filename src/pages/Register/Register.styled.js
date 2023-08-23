@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const StyledRegisterDiv = styled.div`
   width: 50vh;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 50px;
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(211 208 204);
