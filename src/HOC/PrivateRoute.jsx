@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { selectIsLoggedIn } from 'Redux/Auth/selectors';
 import { useSelector } from 'react-redux';
 
@@ -10,4 +11,8 @@ export const PrivateRoute = ({ children }) => {
     return children;
   }
   return <Navigate to="/login" state={{ from: location }} />;
+};
+
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
 };
