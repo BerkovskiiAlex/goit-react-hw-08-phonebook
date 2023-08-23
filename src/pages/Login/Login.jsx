@@ -5,6 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {
+  StyledLoginButton,
+  StyledLoginDiv,
+  StyledLoginForm,
+  StyledLoginInput,
+} from './Login.styled';
 
 //HOC - High Order Component
 
@@ -38,10 +44,10 @@ export const Login = () => {
 
   return (
     <section>
-      <div>
+      <StyledLoginDiv>
         <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <input
+        <StyledLoginForm onSubmit={handleSubmit}>
+          <StyledLoginInput
             placeholder="Enter your email"
             type="email"
             value={email}
@@ -54,14 +60,14 @@ export const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />
           <div>
-            <button type="submit">Login</button>
+            <StyledLoginButton type="submit">Login</StyledLoginButton>
           </div>
-        </form>
-      </div>
-      <span>
-        You are not registered yet?
-        <Link to="/register">Go to register form</Link>
-      </span>
+          <span>
+            You are not registered yet?
+            <Link to="/register">Go to register form</Link>
+          </span>
+        </StyledLoginForm>
+      </StyledLoginDiv>
     </section>
   );
 };

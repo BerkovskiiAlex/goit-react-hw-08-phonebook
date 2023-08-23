@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const StyledRegisterDiv = styled.div`
+export const StyledLoginDiv = styled.div`
   width: 50vh;
   margin: 0 auto;
   margin-top: 10px;
@@ -12,7 +12,7 @@ export const StyledRegisterDiv = styled.div`
   text-align: center;
 `;
 
-export const StyledRegisterForm = styled.form`
+export const StyledLoginForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,12 +21,12 @@ export const StyledRegisterForm = styled.form`
   gap: 10px;
 `;
 
-export const StyledRegisterInput = styled.input`
+export const StyledLoginInput = styled.input`
   border: 1px solid black;
   border-radius: 5px;
 `;
 
-export const StyledRegisterButton = styled.button`
+export const StyledLoginButton = styled.button`
   border: 1px solid black;
   border-radius: 5px;
 `;

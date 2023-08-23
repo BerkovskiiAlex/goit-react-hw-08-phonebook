@@ -6,7 +6,7 @@ import { fetchContactsThunk } from 'Redux/operations';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { Register } from 'pages/Register/Register';
-import { Login } from 'pages/Login';
+import { Login } from 'pages/Login/Login';
 import { Contacts } from 'pages/Contacts/Contacts';
 import { UserMenu } from 'pages/User-Menu/UserMenu';
 import { PrivateRoute } from 'HOC/PrivateRoute';

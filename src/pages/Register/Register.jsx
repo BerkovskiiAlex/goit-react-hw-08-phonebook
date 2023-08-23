@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {
+  StyledRegisterButton,
+  StyledRegisterDiv,
+  StyledRegisterForm,
+  StyledRegisterInput,
+} from './Register.styled';
 
 // Alexey
 // Alexey100500@mail.com
@@ -32,36 +38,36 @@ export const Register = () => {
   };
   return (
     <section>
-      <div>
+      <StyledRegisterDiv>
         <h1>Register</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Enter your name...."
+        <StyledRegisterForm onSubmit={handleSubmit}>
+          <StyledRegisterInput
+            placeholder="Enter your name"
             type="text"
             value={name}
             onChange={e => setName(e.target.value)}
           />
-          <input
-            placeholder="Enter your email...."
+          <StyledRegisterInput
+            placeholder="Enter your email"
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-          <input
-            placeholder="Enter your pass...."
+          <StyledRegisterInput
+            placeholder="Enter your password"
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
           <div>
-            <button type="submit">Register</button>
+            <StyledRegisterButton type="submit">Register</StyledRegisterButton>
           </div>
           <span>
             Are you already registered?
             <Link to="/login">Go to login form</Link>
           </span>
-        </form>
-      </div>
+        </StyledRegisterForm>
+      </StyledRegisterDiv>
     </section>
   );
 };
