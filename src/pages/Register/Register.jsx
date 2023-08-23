@@ -29,8 +29,8 @@ export const Register = () => {
     dispatch(registerThunk(credentials))
       .unwrap()
       .then(res => {
-        navigate(location.state?.from || '/');
-        toast.success(`Registration successful., ${res.user.name}`);
+        navigate(location.state?.from || '/contacts');
+        toast.success(`Registration successful, hello ${res.user.name}`);
       })
       .catch(err => {
         toast.error('Try another data!');
