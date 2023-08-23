@@ -13,7 +13,6 @@ import { Loader } from 'components/Loader/Loader';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { StyledInputForm } from './Contacts.styled';
 
 export const Contacts = () => {
   const dispatch = useDispatch();
