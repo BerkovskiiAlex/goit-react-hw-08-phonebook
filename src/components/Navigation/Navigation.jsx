@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
 import { selectIsLoggedIn, selectUser } from 'Redux/Auth/selectors';
 import { StyledDiv, StyledH1, StyledNavLink } from './Navigation.styled';
