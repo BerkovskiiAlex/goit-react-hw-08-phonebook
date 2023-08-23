@@ -54,7 +54,14 @@ export const App = () => {
             </PublicRoute>
           }
         />
-        <Route path="usermenu" element={<UserMenu />} />
+        <Route
+          path="usermenu"
+          element={
+            <PrivateRoute>
+              <UserMenu />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
