@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 
-export const StyledForm = styled.form`
+export const StyledDiv = styled.div`
   width: 50vh;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 10px;
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(211 208 204);
@@ -12,14 +12,6 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 20px;
+  gap: 10px;
   padding: 20px 0;
-`;
-
-export const StyledInput = styled.input`
-  border-radius: 5px;
-`;
-
-export const StyledButton = styled.button`
-  border-radius: 5px;
 `;

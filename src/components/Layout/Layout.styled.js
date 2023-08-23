@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const StyledSection = styled.section`
   width: 100%;
   margin: 0 auto;
-  background-color: rgb(224 246 248);
+  background-color: white;
 `;
 
 // export const StyledOutletSection = styled.section`

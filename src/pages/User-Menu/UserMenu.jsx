@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { StyledDiv } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const { email, name } = useSelector(selectUser);
@@ -19,9 +20,9 @@ export const UserMenu = () => {
       });
   };
   return (
-    <div>
+    <StyledDiv>
       <p>{email}</p>
       <button onClick={handleExit}>Logout</button>
-    </div>
+    </StyledDiv>
   );
 };

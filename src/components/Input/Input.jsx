@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { StyledButton, StyledForm, StyledInput } from './Input.styled';
 
 export const Input = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -28,10 +29,10 @@ export const Input = ({ onSubmit }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <p>Name</p>
+      <StyledForm onSubmit={handleSubmit}>
+        <span>Name</span>
         <label>
-          <input
+          <StyledInput
             type="text"
             name="name"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -42,9 +43,9 @@ export const Input = ({ onSubmit }) => {
           />
         </label>
 
-        <p>Number</p>
+        <span>Number</span>
         <label>
-          <input
+          <StyledInput
             type="tel"
             name="number"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -55,8 +56,8 @@ export const Input = ({ onSubmit }) => {
           />
         </label>
 
-        <button type="submit">Add contact</button>
-      </form>
+        <StyledButton type="submit">Add contact</StyledButton>
+      </StyledForm>
     </>
   );
 };

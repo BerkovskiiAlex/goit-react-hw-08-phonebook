@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyledLabel } from './Filter.styled';
+import { StyledInput } from 'components/Input/Input.styled';
 
 export const Filter = ({ onFilterChange, filter }) => {
   return (
     <>
-      <p>Find contacts by name</p>
-      <label>
-        <input
+      <StyledLabel>
+        <StyledInput
           type="text"
           name="filter"
-          placeholder="Search by name"
+          placeholder="Find contacts by name"
           value={filter}
           onChange={onFilterChange}
         />
-      </label>
+      </StyledLabel>
     </>
   );
 };

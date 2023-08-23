@@ -15,6 +15,7 @@ export const StyledDiv = styled.div`
 export const StyledNavLink = styled(NavLink)`
   position: relative;
   padding: 0 30px;
+  text-decoration: none;
   &::after {
     content: '';
     position: absolute;

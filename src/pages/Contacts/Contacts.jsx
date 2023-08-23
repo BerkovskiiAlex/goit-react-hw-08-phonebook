@@ -7,7 +7,7 @@ import {
   selectIsLoading,
 } from 'Redux/sellectors';
 import { ContactsList } from 'components/ContactList/ContactList';
-import { Filter } from 'components/Filter';
+import { Filter } from 'components/Filter/Filter';
 import { Input } from 'components/Input/Input';
 import { Loader } from 'components/Loader';
 import React from 'react';
@@ -56,9 +56,9 @@ export const Contacts = () => {
       ) : (
         <div>
           <section>
-            <StyledInputForm>
+            <div>
               <Input onSubmit={handleAddContact} />
-            </StyledInputForm>
+            </div>
             <ContactsList
               contacts={filteredContacts}
               onDeleteContact={handleDeleteContact}

@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+import { StyledUl } from './ContactList.styled';
 
 export const ContactsList = ({ contacts, onDeleteContact }) => {
   return (
-    <ul>
+    <StyledUl>
       {contacts.map(contact => (
         <li
           key={nanoid()}
@@ -15,7 +16,7 @@ export const ContactsList = ({ contacts, onDeleteContact }) => {
           <button onClick={() => onDeleteContact(contact.id)}>Delete</button>
         </li>
       ))}
-    </ul>
+    </StyledUl>
   );
 };
 
