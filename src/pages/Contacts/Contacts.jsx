@@ -9,7 +9,7 @@ import {
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Input } from 'components/Input/Input';
-import { Loader } from 'components/Loader';
+import { Loader } from 'components/Loader/Loader';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
